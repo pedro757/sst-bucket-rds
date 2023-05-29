@@ -6,7 +6,7 @@
     "build": "sst bind next build",
     "dev": "sst bind next dev",
     "lint": "next lint",
-    "start": "sst bind next start",
+    "start": "next start",
     "postinstall": "prisma generate"
   },
   "dependencies": {
