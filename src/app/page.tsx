@@ -2,6 +2,7 @@ import crypto from "crypto";
 import { Bucket } from "sst/node/bucket";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import Form from "./form";
 
 export default async function Page() {
   const command = new PutObjectCommand({
@@ -11,5 +12,5 @@ export default async function Page() {
   });
   const url = await getSignedUrl(new S3Client({}), command);
 
-  return <div>{url}</div>;
+  return <Form url={url} />;
 }
