@@ -15,4 +15,4 @@ export default async function Page() {
   return <Form url={url} />;
 }
 
-export const revalidate = false;
+export const revalidate = 10;
