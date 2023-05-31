@@ -1,18 +1,23 @@
 "use client";
+
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 export default function Home({ url }: { url: string }) {
   const { register, handleSubmit } = useForm<{ file: FileList }>();
 
+  useEffect(() => console.log(url), [url])
+
   const onSubmit = handleSubmit(async (data) => {
-    if (!data.file[0]) return;
+    const file = data.file[0];
+    if (!file) return;
 
     await fetch(url, {
       method: "PUT",
-      body: data.file[0],
+      body: file,
       headers: {
-        "Content-Type": data.file[0].type,
-        "Content-Disposition": `attachment; filename="${data.file[0].name}"`,
+        "Content-Type": file.type,
+        "Content-Disposition": `attachment; filename="${file.name}"`,
       },
     });
   });

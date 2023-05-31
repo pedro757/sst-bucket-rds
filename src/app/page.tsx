@@ -6,7 +6,7 @@ import Form from "./form";
 
 export default async function Page() {
   const command = new PutObjectCommand({
-    ACL: "public-read",
+    ACL: "private",
     Key: crypto.randomUUID(),
     Bucket: Bucket.public.bucketName,
   });
@@ -14,3 +14,5 @@ export default async function Page() {
 
   return <Form url={url} />;
 }
+
+export const revalidate = false;
